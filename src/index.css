@@ -140,3 +140,57 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* High Contrast Mode for visual impairments */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --primary: 60 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 180 100% 50%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 60 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --border: 0 0% 50%;
+  --math: 30 100% 50%;
+  --english: 280 100% 60%;
+  --kannada: 60 100% 50%;
+  --science: 120 100% 40%;
+  --social: 200 100% 50%;
+}
+
+.high-contrast * {
+  border-width: 3px !important;
+  font-weight: 600 !important;
+}
+
+/* Large Text Mode for visual impairments */
+.large-text {
+  font-size: 1.25rem !important;
+}
+
+.large-text h1 {
+  font-size: 3.5rem !important;
+}
+
+.large-text h2 {
+  font-size: 2.5rem !important;
+}
+
+.large-text h3 {
+  font-size: 2rem !important;
+}
+
+.large-text p, .large-text span, .large-text button {
+  font-size: 1.4rem !important;
+}
+
+/* Focus styles for keyboard navigation */
+*:focus-visible {
+  outline: 4px solid hsl(var(--primary)) !important;
+  outline-offset: 4px !important;
+}

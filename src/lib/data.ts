@@ -41,6 +41,13 @@ export const subjects: Subject[] = [
     description: 'Learn reading, writing, and storytelling!'
   },
   {
+    id: 'kannada',
+    name: 'Kannada',
+    icon: '🇮🇳',
+    color: 'kannada',
+    description: 'Learn Kannada language - reading and writing!'
+  },
+  {
     id: 'evs',
     name: 'EVS',
     icon: '🌱',
