@@ -11,10 +11,10 @@ const GradePage = () => {
   // Filter subjects based on grade
   const getSubjectsForGrade = (grade: number) => {
     if (grade === 1) {
-      // Grade 1: Math, English, EVS, Story Telling (no Science, Social, Kannada)
-      return subjects.filter(s => ['math', 'english', 'evs', 'storytelling'].includes(s.id));
+      // Grade 1: Math, English, Kannada, EVS, Story Telling
+      return subjects.filter(s => ['math', 'english', 'kannada', 'evs', 'storytelling'].includes(s.id));
     }
-    // For other grades, exclude evs and storytelling, include science and social
+    // For other grades, exclude evs and storytelling, include science, social, and kannada
     return subjects.filter(s => !['evs', 'storytelling'].includes(s.id));
   };
 

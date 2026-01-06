@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./hooks/useAuth";
+import { AccessibilityProvider } from "./hooks/useAccessibility";
+import { AccessibilityToolbar } from "./components/AccessibilityToolbar";
 import Index from "./pages/Index";
 import AuthPage from "./pages/AuthPage";
 import GradePage from "./pages/GradePage";
@@ -22,18 +24,21 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
-            <Route path="/grade/:gradeNumber" element={<ProtectedRoute><GradePage /></ProtectedRoute>} />
-            <Route path="/grade/:gradeNumber/:subject" element={<ProtectedRoute><SubjectPage /></ProtectedRoute>} />
-            <Route path="/quiz/:gradeNumber/:subject" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <AccessibilityProvider>
+          <Toaster />
+          <Sonner />
+          <AccessibilityToolbar />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+              <Route path="/grade/:gradeNumber" element={<ProtectedRoute><GradePage /></ProtectedRoute>} />
+              <Route path="/grade/:gradeNumber/:subject" element={<ProtectedRoute><SubjectPage /></ProtectedRoute>} />
+              <Route path="/quiz/:gradeNumber/:subject" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AccessibilityProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>

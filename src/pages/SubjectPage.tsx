@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, Play, Sparkles, Trophy } from 'lucide-react';
 import { subjects, sampleVideos } from '@/lib/data';
+import { SpeakButton } from '@/components/SpeakButton';
 import { MathAddition } from '@/components/learning/MathAddition';
 import { MathSubtraction } from '@/components/learning/MathSubtraction';
 import { MathTwoDigitAddition } from '@/components/learning/MathTwoDigitAddition';
@@ -16,6 +17,7 @@ import { EnglishAnimation } from '@/components/learning/EnglishAnimation';
 import { SocialAnimation } from '@/components/learning/SocialAnimation';
 import { EVSAnimation } from '@/components/learning/EVSAnimation';
 import { StoryTellingAnimation } from '@/components/learning/StoryTellingAnimation';
+import { KannadaAnimation } from '@/components/learning/KannadaAnimation';
 import { EnglishGrade2 } from '@/components/learning/grade2/EnglishGrade2';
 import { MathGrade2Interactive } from '@/components/learning/grade2/MathGrade2Interactive';
 import { EVSGrade2 } from '@/components/learning/grade2/EVSGrade2';
@@ -62,9 +64,16 @@ const SubjectPage = () => {
           <div className="text-8xl mb-6 animate-bounce">
             {currentSubject?.icon}
           </div>
-          <h1 className={`text-5xl md:text-6xl font-bold text-${currentSubject?.color}-foreground mb-4 drop-shadow-lg`}>
-            {currentSubject?.name} - Grade {gradeNumber}
-          </h1>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h1 className={`text-5xl md:text-6xl font-bold text-${currentSubject?.color}-foreground drop-shadow-lg`}>
+              {currentSubject?.name} - Grade {gradeNumber}
+            </h1>
+            <SpeakButton 
+              text={`Welcome to ${currentSubject?.name} for Grade ${gradeNumber}. ${currentSubject?.description}`}
+              size="lg"
+              className="bg-white/20 hover:bg-white/30"
+            />
+          </div>
           <p className={`text-2xl text-${currentSubject?.color}-foreground/95 font-medium mb-8`}>
             {currentSubject?.description}
           </p>
@@ -134,6 +143,9 @@ const SubjectPage = () => {
                 {parseInt(gradeNumber || '1') === 1 && subject === 'storytelling' && (
                   <StoryTellingAnimation grade={1} />
                 )}
+                {parseInt(gradeNumber || '1') === 1 && subject === 'kannada' && (
+                  <KannadaAnimation grade={1} />
+                )}
 
                 {/* Grade 2 Activities */}
                 {parseInt(gradeNumber || '1') === 2 && subject === 'math' && (
@@ -177,7 +189,10 @@ const SubjectPage = () => {
                     <ScienceAnimation grade={2} />
                   </div>
                 )}
-                {parseInt(gradeNumber || '1') === 2 && !['math', 'english', 'evs', 'science'].includes(subject || '') && (
+                {parseInt(gradeNumber || '1') === 2 && subject === 'kannada' && (
+                  <KannadaAnimation grade={2} />
+                )}
+                {parseInt(gradeNumber || '1') === 2 && !['math', 'english', 'evs', 'science', 'kannada'].includes(subject || '') && (
                   <div className="space-y-6">
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold">🎨 Fun Activities for Grade 2</h3>
@@ -228,6 +243,9 @@ const SubjectPage = () => {
                     <SocialAnimation grade={3} />
                   </div>
                 )}
+                {parseInt(gradeNumber || '1') === 3 && subject === 'kannada' && (
+                  <KannadaAnimation grade={3} />
+                )}
 
                 {/* Grade 4 Activities */}
                 {parseInt(gradeNumber || '1') === 4 && subject === 'math' && (
@@ -266,7 +284,10 @@ const SubjectPage = () => {
                     <SocialGrade4 />
                   </div>
                 )}
-                {parseInt(gradeNumber || '1') === 4 && !['math', 'english', 'science', 'social'].includes(subject || '') && (
+                {parseInt(gradeNumber || '1') === 4 && subject === 'kannada' && (
+                  <KannadaAnimation grade={4} />
+                )}
+                {parseInt(gradeNumber || '1') === 4 && !['math', 'english', 'science', 'social', 'kannada'].includes(subject || '') && (
                   <div className="space-y-6">
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold">🧩 Brain Games for Grade 4</h3>
